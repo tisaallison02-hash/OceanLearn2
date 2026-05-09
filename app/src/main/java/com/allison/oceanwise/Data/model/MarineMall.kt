@@ -1,2 +1,2 @@
-package com.allison.oceanwise.Data.model
+package com.allison.oceanwise.data.model
 

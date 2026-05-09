@@ -1,7 +1,7 @@
 package com.allison.oceanwise.data.repository
 
-import com.allison.oceanwise.Firebase.FirebaseAuthManager
-import com.allison.oceanwise.Firebase.FirestoreManager
+import com.allison.oceanwise.firebase.FirebaseAuthManager
+import com.allison.oceanwise.firebase.FirestoreManager
 import com.allison.oceanwise.data.model.User
 import com.google.firebase.auth.FirebaseUser
 

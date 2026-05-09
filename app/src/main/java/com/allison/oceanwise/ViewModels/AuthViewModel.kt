@@ -1,4 +1,4 @@
-package com.allison.oceanwise.ViewModels
+package com.allison.oceanwise.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,6 +1,6 @@
 package com.allison.oceanwise.data.repository
 
-import com.allison.oceanwise.Firebase.FirestoreManager
+import com.allison.oceanwise.firebase.FirestoreManager
 import com.allison.oceanwise.data.model.User
 
 class UserRepository(private val firestoreManager: FirestoreManager) {

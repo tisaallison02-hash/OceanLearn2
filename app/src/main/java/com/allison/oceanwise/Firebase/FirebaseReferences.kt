@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Firebase
+package com.allison.oceanwise.firebase
 
 object FirebaseReferences {
     const val USERS = "users"

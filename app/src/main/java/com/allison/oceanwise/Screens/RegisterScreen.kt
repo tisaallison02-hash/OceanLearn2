@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Screens
+package com.allison.oceanwise.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,9 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.allison.oceanwise.Components.OceanButton
-import com.allison.oceanwise.ViewModels.AuthState
-import com.allison.oceanwise.ViewModels.AuthViewModel
+import com.allison.oceanwise.components.OceanButton
+import com.allison.oceanwise.viewmodels.AuthState
+import com.allison.oceanwise.viewmodels.AuthViewModel
 import com.allison.oceanwise.navigation.Route
 
 @Composable

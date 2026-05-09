@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Components
+package com.allison.oceanwise.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

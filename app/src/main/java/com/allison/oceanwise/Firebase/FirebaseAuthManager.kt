@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Firebase
+package com.allison.oceanwise.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

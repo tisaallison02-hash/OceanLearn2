@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Screens
+package com.allison.oceanwise.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.allison.oceanwise.ViewModels.UserViewModel
+import com.allison.oceanwise.viewmodels.UserViewModel
 import com.allison.oceanwise.navigation.Route
 import com.google.firebase.auth.FirebaseAuth
 

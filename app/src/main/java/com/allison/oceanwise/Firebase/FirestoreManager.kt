@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Firebase
+package com.allison.oceanwise.firebase
 
 import com.allison.oceanwise.data.model.MarineAnimal
 import com.allison.oceanwise.data.model.QuizQuestion

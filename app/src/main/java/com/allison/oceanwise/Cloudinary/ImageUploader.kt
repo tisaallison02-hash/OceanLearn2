@@ -1,4 +1,4 @@
-package com.allison.oceanwise.Cloudinary
+package com.allison.oceanwise.cloudinary
 
 import android.content.Context
 import android.net.Uri
