@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "639507176808",
+    "project_id": "oceanlearn-66d7d",
+    "storage_bucket": "oceanlearn-66d7d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639507176808:android:b72beeae53e0237ad84add",
+        "android_client_info": {
+          "package_name": "com.allison.oceanwise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKRnpZ6e3HsdA7qlUDEkZhe1QFaX5vj0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
