@@ -10,31 +10,15 @@ class FirebaseAuthManager {
     val currentUser: FirebaseUser?
         get() = auth.currentUser
 
-    suspend fun signInAnonymously(): FirebaseUser? {
-        return try {
-            val result = auth.signInAnonymously().await()
-            result.user
-        } catch (e: Exception) {
-            null
-        }
-    }
-
     suspend fun signUp(email: String, pass: String): FirebaseUser? {
-        return try {
-            val result = auth.createUserWithEmailAndPassword(email, pass).await()
-            result.user
-        } catch (e: Exception) {
-            null
-        }
+        // We let the exception propagate so we can catch the real error message in the ViewModel
+        val result = auth.createUserWithEmailAndPassword(email, pass).await()
+        return result.user
     }
 
     suspend fun signIn(email: String, pass: String): FirebaseUser? {
-        return try {
-            val result = auth.signInWithEmailAndPassword(email, pass).await()
-            result.user
-        } catch (e: Exception) {
-            null
-        }
+        val result = auth.signInWithEmailAndPassword(email, pass).await()
+        return result.user
     }
 
     fun signOut() {

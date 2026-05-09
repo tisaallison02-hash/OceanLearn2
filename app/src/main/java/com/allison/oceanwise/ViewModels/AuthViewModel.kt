@@ -15,16 +15,29 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
     fun login(email: String, pass: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            val user = repository.login(email, pass)
-            _authState.value = if (user != null) AuthState.Authenticated else AuthState.Error("Login Failed")
+            try {
+                val user = repository.login(email, pass)
+                _authState.value = if (user != null) AuthState.Authenticated else AuthState.Error("Login Failed")
+            } catch (e: Exception) {
+                _authState.value = AuthState.Error(e.message ?: "Login Failed")
+            }
         }
     }
 
     fun register(name: String, email: String, pass: String) {
+        if (name.isBlank() || email.isBlank() || pass.isBlank()) {
+            _authState.value = AuthState.Error("Please fill in all fields")
+            return
+        }
+        
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            val user = repository.register(name, email, pass)
-            _authState.value = if (user != null) AuthState.Authenticated else AuthState.Error("Registration Failed")
+            try {
+                val user = repository.register(name, email, pass)
+                _authState.value = if (user != null) AuthState.Authenticated else AuthState.Error("Registration Failed")
+            } catch (e: Exception) {
+                _authState.value = AuthState.Error(e.message ?: "Registration Failed")
+            }
         }
     }
 

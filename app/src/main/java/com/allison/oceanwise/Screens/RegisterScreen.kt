@@ -1,5 +1,6 @@
 package com.allison.oceanwise.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -12,6 +13,7 @@ import com.allison.oceanwise.components.OceanButton
 import com.allison.oceanwise.viewmodels.AuthState
 import com.allison.oceanwise.viewmodels.AuthViewModel
 import com.allison.oceanwise.navigation.Route
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
 
 @Composable
 fun RegisterScreen(navController: NavController, viewModel: AuthViewModel) {
@@ -31,6 +33,7 @@ fun RegisterScreen(navController: NavController, viewModel: AuthViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(TropicalTurquoise)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center

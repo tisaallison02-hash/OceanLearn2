@@ -1,5 +1,6 @@
 package com.allison.oceanwise.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -9,12 +10,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.allison.oceanwise.components.OceanButton
 import com.allison.oceanwise.navigation.Route
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
 
 @Composable
 fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(TropicalTurquoise)
             .padding(24.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
