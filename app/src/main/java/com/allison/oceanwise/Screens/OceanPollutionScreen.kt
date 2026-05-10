@@ -12,14 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OceanPollutionScreen(navController: NavController) {
     Scaffold(
+        containerColor = TropicalTurquoise,
         topBar = {
             TopAppBar(
-                title = { Text("Ocean Pollution") },
+                title = { Text("Ocean Pollution & Solutions") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -46,7 +48,8 @@ fun OceanPollutionScreen(navController: NavController) {
             item {
                 PollutionItem(
                     title = "Plastic Waste",
-                    description = "Over 8 million tons of plastic enter our oceans every year, killing marine life and entering the food chain.",
+                    description = "Over 8 million tons of plastic enter our oceans every year. It breaks down into microplastics that enter the food chain, harming everything from plankton to whales.",
+                    solution = "Solution: Reduce single-use plastics, support plastic bans, and participate in beach cleanups.",
                     icon = Icons.Default.Warning
                 )
             }
@@ -54,7 +57,8 @@ fun OceanPollutionScreen(navController: NavController) {
             item {
                 PollutionItem(
                     title = "Chemical Runoff",
-                    description = "Industrial and agricultural waste creates 'dead zones' where no marine life can survive.",
+                    description = "Industrial waste and agricultural fertilizers create 'dead zones' where oxygen levels are too low for marine life to survive.",
+                    solution = "Solution: Use eco-friendly fertilizers, support sustainable farming, and advocate for stricter industrial regulations.",
                     icon = Icons.Default.Warning
                 )
             }
@@ -62,27 +66,78 @@ fun OceanPollutionScreen(navController: NavController) {
             item {
                 PollutionItem(
                     title = "Oil Spills",
-                    description = "Large-scale oil spills destroy habitats and are extremely difficult to clean up, lasting for decades.",
+                    description = "Oil spills coat the feathers of birds and the fur of mammals, destroying their waterproofing and causing hypothermia or death.",
+                    solution = "Solution: Transition to renewable energy and improve safety protocols for offshore drilling and transport.",
                     icon = Icons.Default.Warning
                 )
+            }
+
+            item {
+                PollutionItem(
+                    title = "Noise Pollution",
+                    description = "Loud noises from ships, sonar, and oil exploration disrupt the communication and navigation of whales and dolphins.",
+                    solution = "Solution: Implement quiet ship technologies and restrict sonar use in sensitive marine habitats.",
+                    icon = Icons.Default.Warning
+                )
+            }
+
+            item {
+                PollutionItem(
+                    title = "Climate Change & Acidification",
+                    description = "The ocean absorbs CO2, causing it to become more acidic. This dissolves the shells of shellfish and corals.",
+                    solution = "Solution: Reduce your carbon footprint by using public transport, eating less meat, and supporting green energy.",
+                    icon = Icons.Default.Warning
+                )
+            }
+            
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "What You Can Do Today ✨",
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
+            
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+                ) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Text("1. Use a reusable water bottle and bag.")
+                        Text("2. Avoid products with microbeads.")
+                        Text("3. Choose sustainable seafood.")
+                        Text("4. Share what you learn on OceanLearn!")
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun PollutionItem(title: String, description: String, icon: ImageVector) {
+fun PollutionItem(title: String, description: String, solution: String, icon: ImageVector) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer)
     ) {
-        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.error)
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.error)
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(text = title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onErrorContainer)
-                Text(text = description, style = MaterialTheme.typography.bodyMedium)
             }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = description, style = MaterialTheme.typography.bodyMedium)
+            Spacer(modifier = Modifier.height(8.dp))
+            Divider(color = MaterialTheme.colorScheme.error.copy(alpha = 0.2f))
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = solution,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+            )
         }
     }
 }

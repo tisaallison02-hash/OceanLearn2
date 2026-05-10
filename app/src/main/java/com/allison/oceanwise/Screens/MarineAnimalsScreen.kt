@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.allison.oceanwise.components.OceanCard
 import com.allison.oceanwise.data.model.MarineAnimal
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
 import com.allison.oceanwise.viewmodels.OceanViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,6 +28,7 @@ fun MarineAnimalsScreen(navController: NavController, viewModel: OceanViewModel)
     }
 
     Scaffold(
+        containerColor = TropicalTurquoise,
         topBar = {
             TopAppBar(
                 title = { Text("Marine Life Explorer") },

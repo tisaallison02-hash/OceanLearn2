@@ -9,10 +9,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.allison.oceanwise.viewmodels.QuizViewModel
 import com.allison.oceanwise.components.OceanButton
+import com.allison.oceanwise.navigation.Route
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
+import com.allison.oceanwise.viewmodels.QuizViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,6 +26,7 @@ fun QuizScreen(navController: NavController, viewModel: QuizViewModel) {
     val finished by viewModel.quizFinished.collectAsState()
 
     Scaffold(
+        containerColor = TropicalTurquoise,
         topBar = {
             TopAppBar(
                 title = { Text("Ocean Quiz") },
@@ -41,31 +45,72 @@ fun QuizScreen(navController: NavController, viewModel: QuizViewModel) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(text = "Quiz Finished! 🎉", style = MaterialTheme.typography.headlineMedium)
-                    Text(text = "Your Score: $score / ${questions.size}", style = MaterialTheme.typography.titleLarge)
+                    Text(
+                        text = "Your Score: $score / ${questions.size}",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.primary
+                    )
                     Spacer(modifier = Modifier.height(24.dp))
                     OceanButton(text = "Restart Quiz", onClick = { viewModel.restartQuiz() })
+                    Spacer(modifier = Modifier.height(12.dp))
+                    TextButton(onClick = { navController.navigate(Route.HOME) {
+                        popUpTo(Route.HOME) { inclusive = true }
+                    } }) {
+                        Text("Back to Home", color = MaterialTheme.colorScheme.onSurface)
+                    }
                 }
             } else if (questions.isNotEmpty()) {
                 val currentQuestion = questions[currentIndex]
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Question ${currentIndex + 1} of ${questions.size}",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     LinearProgressIndicator(
                         progress = { (currentIndex + 1).toFloat() / questions.size },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        color = MaterialTheme.colorScheme.primary,
+                        trackColor = MaterialTheme.colorScheme.surfaceVariant
                     )
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Text(text = currentQuestion.question, style = MaterialTheme.typography.headlineSmall)
+
                     Spacer(modifier = Modifier.height(32.dp))
-                    
+
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
+                        ),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                    ) {
+                        Text(
+                            text = currentQuestion.question,
+                            style = MaterialTheme.typography.headlineSmall,
+                            modifier = Modifier.padding(24.dp),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
                     currentQuestion.options.forEachIndexed { index, option ->
                         OceanButton(
                             text = option,
                             onClick = { viewModel.submitAnswer(index) },
-                            modifier = Modifier.padding(vertical = 4.dp)
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
                         )
                     }
                 }
             } else {
-                Text(text = "Loading questions...", modifier = Modifier.align(Alignment.Center))
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         }
     }

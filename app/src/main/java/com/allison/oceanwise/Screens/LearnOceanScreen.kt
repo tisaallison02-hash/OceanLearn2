@@ -11,11 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.allison.oceanwise.ui.theme.TropicalTurquoise
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LearnOceansScreen(navController: NavController) {
     Scaffold(
+        containerColor = TropicalTurquoise,
         topBar = {
             TopAppBar(
                 title = { Text("Learn About Oceans") },

@@ -15,6 +15,8 @@ object ImageUploader {
         onError: (message: String) -> Unit
     ) {
         MediaManager.get().upload(imageUri)
+            .unsigned("oceanview")
+            .option("cloud_name", "dhqlofkbb")
             .callback(object : UploadCallback {
                 override fun onStart(requestId: String) {
                     // Upload started
